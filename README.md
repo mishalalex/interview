@@ -1,25 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 # This project is currently under development
-## Getting Started
 
-First, run the development server:
+## Getting started
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is an AI interview application created using React, NextJs, TailwindCSS, Supabase, Vapi and other technologies.
+The application should let a user login, select a job from the listings, upload the resume of the user, create an interview session with the 
+user where an AI ingests the JD and resume to formulate a set of relevant questions and asks them to the user, when done, a detailed feedback is shared with the user.
+Future plan is to replace Vapi with an instance of Ollama and an open source model.
+
+## Setup
+
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
