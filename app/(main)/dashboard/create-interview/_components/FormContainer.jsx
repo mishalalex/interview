@@ -12,7 +12,7 @@ import { InterviewType } from '@/services/Constants'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 
-function FormContainer({onHandleInputChange}) {
+function FormContainer({onHandleInputChange,GoToNext}) {
     const [interviewType, setInterviewType] = useState([]);
     useEffect(() => {
         if(interviewType){
@@ -70,7 +70,7 @@ function FormContainer({onHandleInputChange}) {
                         key={index} 
                         className={`flex items-center 
                         cursor-pointer gap-2 p-1 
-                        px-2 bg-white border 
+                        px-4 bg-white border 
                         border-gray-300 rounded-2xl
                         hover:bg-secondary
                         ${interviewType.includes(type.title) && 'bg-blue-50 text-primary'}`} 
@@ -82,7 +82,9 @@ function FormContainer({onHandleInputChange}) {
                 ))}
             </div>
         </div>
-        <div className='mt-7 flex justify-end'>
+        <div className='mt-7 flex justify-end'
+            onClick={() => GoToNext()}
+        >
             <Button>Generate Questions <ArrowRight /></Button>
         </div>
     </div>

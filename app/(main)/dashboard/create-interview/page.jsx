@@ -4,6 +4,8 @@ import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import FormContainer from './_components/FormContainer';
+import QuestionList from './_components/QuestionList';
+import { toast } from 'sonner';
 
 function CreateInterview() {
     const router = useRouter();
@@ -16,14 +18,36 @@ function CreateInterview() {
         }))
         console.log("FormData",formData)
     }
+
+    const onGoToNext = () => {
+        if(
+            !formData?.jobPosition || 
+            !formData?.jobDescription ||
+            !formData?.duration ||
+            !formData?.type
+        ){
+            toast('Please enter all the required details!')
+            return ;
+        }
+        setStep(step + 1);
+    }
   return (
     <div className='mt-10 px-10 md:px-24 lg:px-44 xl:px-56'>
         <div className='flex gap-1 items-center'>
             <ArrowLeft onClick={() => router.back()} className='cursor-pointer' />
             <h2 className='font-bold text-2xl'>Create New Interview</h2>
         </div>
-        <Progress value={step * 33} className='my-5'/>
-        <FormContainer onHandleInputChange={onHandleInputChange} />
+        <Progress value={step * 33.33} className='my-5'/>
+        {
+            step==1 ? 
+                <FormContainer 
+                    onHandleInputChange={onHandleInputChange} 
+                    GoToNext={() => onGoToNext()}
+                />:
+            step==2 ?
+                <QuestionList formData={formData} />
+            :null
+        }
     </div>
   )
 }
