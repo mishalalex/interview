@@ -8,7 +8,7 @@ import { supabase } from '@/services/supabaseClient';
 import { useUser } from '@/app/provider';
 import {v4 as uuid4} from 'uuid';
 
-function QuestionList({formData}) {
+function QuestionList({formData, onCreateLink}) {
     const [loading,setLoading] = useState(true);
     const [questionList, setQuestionList] = useState();
     const [databaseLoading, setDatabaseLoading] = useState(false);
@@ -39,7 +39,7 @@ function QuestionList({formData}) {
     }
     const onFinish = async() => {
         setDatabaseLoading(true);
-        const interviewId = uuid4();
+        const interview_id = uuid4();
         const { data, error } = await supabase
             .from('Interviews')
             .insert([
@@ -47,11 +47,12 @@ function QuestionList({formData}) {
                     ...formData,
                     questionList:questionList,
                     userEmail:user?.email,
-                    interview_id:interviewId
+                    interview_id:interview_id
                  },
             ])
             .select()
         setDatabaseLoading(false);
+        onCreateLink(interview_id);
         console.log(data);
     }
   return (
@@ -73,7 +74,7 @@ function QuestionList({formData}) {
         <div className='flex justify-end mt-10'>
             <Button onClick={()=>onFinish()} disabled={databaseLoading}>
                 {databaseLoading && <Loader2Icon className='animate-spin' />}
-                Finish
+                Create Interview Link & Finish
             </Button>
         </div>
     </div>
