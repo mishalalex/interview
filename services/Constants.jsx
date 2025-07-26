@@ -76,6 +76,10 @@ format: interviewQuestions = [
         ...
     }
 ]
+Make sure that the difficulty of the questions should progress from easy to 
+difficult from the first to last question, i.e. keep the difficult questions
+at the end.
+
 The goal is to create a structured, relevant and time - optimized interview
  plan for a {{jobTitle}} role.
 `
