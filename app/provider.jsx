@@ -17,9 +17,9 @@ function Provider({children}){
         supabase.auth.getUser().then(async({data:{user}}) => {
             // check whether existing user by comparing email
             let { data: Users, error } = await supabase
-            .from('Users')
-            .select("*")
-            .eq('email',user?.email);
+                .from('Users')
+                .select("*")
+                .eq('email',user?.email);
 
             console.log("Existing user found: ",Users)
 
